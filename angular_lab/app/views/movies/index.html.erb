@@ -1,0 +1,35 @@
+
+<div ng-controller="IndexCtrl" ng-style="{backgroundColor: backgroundColor}">
+
+	<h2>Favorite Movies</h2>
+		
+		<div>
+			<input type="text" ng-keypress="count=count+1" ng-init="count=0" placeholder="key counter">
+			<h4>key press count: {{}}</h4>
+		</div>
+
+
+		<h4>I have {{favoriteMovies.length}} favorite movies
+			<ng-pluralize count = "favoriteMovies.length" when="{'1': 'movie', 'other' : movies'}"</ng-pluralize>
+		</h4>
+
+		<input type="checkbox" ng-model="seeMovies" id="checkBox">
+		<label for="checkBox">See movies</label>
+
+		<div ng-show = "seeMovies" ng-repeat="favoriteMovie in favoriteMovies | orderBy: 'name' | limitTo: 3">
+			INDEX: {{$index}}
+			REAL INDEX: {{favoriteMovies.indexOf(favoriteMovie)}}
+			<span>{{favoriteMovie.name}}</span>
+			<button ng-click="removeFavorite(movie)">Remove</button>
+		</div>
+
+		<div ng-hide="seeMovies">Movies hidden</div>
+
+		<input type="text" ng-model="backgroundColor" placeholder="background color">
+
+		<input type="text" ng-model="background" placeholder="full background color">
+
+	
+	
+
+</div> <!-- controller -->
